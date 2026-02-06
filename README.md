@@ -1,2 +1,2 @@
-# Random-Quiz
-This is website that generates a random 5 question quiz
+# Multiplication quiz
+This is website that generates multiplication questions
