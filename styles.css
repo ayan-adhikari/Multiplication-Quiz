@@ -81,6 +81,17 @@ Text: #FFF*/
 {
     transform: scale(0.9);
 }
+.answer:disabled{
+    cursor: default;
+    filter: brightness(0.7);
+    transition: filter 0.3s ease;
+    transition: background-color 0.5s ease-in-out;
+    transform: scale(0.97);
+}
+.answer:disabled:hover
+{
+    cursor: not-allowed;
+}
 .next
 {
     background-color: #0F2238;
@@ -96,7 +107,8 @@ Text: #FFF*/
 {
     transform: scale(0.9);
 }
-/*Flexbox/Grid styling*/
+/*Display styling*/
+/*Flexbox*/
 .flexbox
 {
     display: flex;
@@ -113,6 +125,7 @@ Text: #FFF*/
     align-content: center;
     flex-direction: column;
 }
+/*Grid*/
 .answer-grid
 {
     display: grid;
@@ -123,9 +136,14 @@ Text: #FFF*/
 }
 /*To move next button to the right*/
 .answer-grid > div
-    {   
-        justify-self: end;
-    }
+{   
+    justify-self: end;
+}
+/*Block/None*/
+.display-none
+{
+    display: none;
+}
 /*Width/Height styling*/
 .width-100
 {
@@ -167,4 +185,8 @@ Text: #FFF*/
     
     
 
+}
+#feedback
+{
+    min-height: 2.5rem;
 }

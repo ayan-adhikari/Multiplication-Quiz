@@ -11,16 +11,19 @@ const answerA = document.getElementById(`answer-A`)
 const answerB = document.getElementById(`answer-B`)
 const answerC = document.getElementById(`answer-C`)
 const answerD = document.getElementById(`answer-D`)
+const next = document.getElementById(`next`)
+const feedback = document.getElementById(`feedback`)
 
-//Other Arrays
+//Arrays
 const multipliers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 let wrongs;
 
 //Event Listeners
-answerA.addEventListener(`click`, clickedA)
-answerB.addEventListener(`click`, clickedB)
-answerC.addEventListener(`click`, clickedC)
-answerD.addEventListener(`click`, clickedD)
+answerA.addEventListener(`click`, () => clickedAnswer("A"))
+answerB.addEventListener(`click`, () => clickedAnswer("B"))
+answerC.addEventListener(`click`, () => clickedAnswer("C"))
+answerD.addEventListener(`click`, () => clickedAnswer("D"))
+next.addEventListener(`click`, () => generateQuestion())
 
 //Variables for multipliers and answer
 //Multiplers
@@ -37,22 +40,25 @@ let wrong2
 let wrong3
 
 //Functions
-//Button click functions
-function clickedA()
+//Button click function
+function clickedAnswer(x)
 {
-    console.log(`Clicked: A`)
-}
-function clickedB()
-{
-    console.log(`Clicked: B`)
-}
-function clickedC()
-{
-    console.log(`Clicked: C`)
-}
-function clickedD()
-{
-    console.log(`Clicked: D`)
+    console.log(`Clicked: ${x}`)
+    if (correctOption == x)
+    {
+        feedback.textContent = `Correct!`
+    }
+    else
+    {
+        feedback.textContent = `Incorrect!`
+    }
+    /*Show next button and disable answer buttons*/
+    next.classList.remove(`display-none`);
+    answerA.disabled = true
+    answerB.disabled = true
+    answerC.disabled = true
+    answerD.disabled = true
+
 }
 //Random number generation function (usually assigned to randInt)
 function generateRandomNumber(min, max) 
@@ -62,6 +68,14 @@ function generateRandomNumber(min, max)
 //Question generation function
 function generateQuestion()
 {
+    /*Re-enable buttons and hide next button*/
+    answerA.disabled = false
+    answerB.disabled = false
+    answerC.disabled = false
+    answerD.disabled = false
+    next.classList.add(`display-none`);
+
+    feedback.textContent = ``
     //Assigns random numbers to multipliers
     multiplier1 = generateRandomNumber(1, 12)
     multiplier2 = generateRandomNumber(1, 12)
