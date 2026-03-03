@@ -24,7 +24,12 @@ answerB.addEventListener(`click`, () => clickedAnswer("B"))
 answerC.addEventListener(`click`, () => clickedAnswer("C"))
 answerD.addEventListener(`click`, () => clickedAnswer("D"))
 next.addEventListener(`click`, () => generateQuestion())
-
+document.addEventListener(`keydown`, () => {
+    if (event.key == `Enter` && answered == true)
+    {
+        setTimeout(generateQuestion, 10)
+    }
+})
 //Variables for multipliers and answer
 //Multiplers
 let multiplier1
@@ -38,7 +43,8 @@ let randInt
 let wrong1
 let wrong2
 let wrong3
-
+//VAriable for detecing whether quetsion has been answered
+answered = false
 //Functions
 //Button click function
 function clickedAnswer(x)
@@ -58,7 +64,7 @@ function clickedAnswer(x)
     answerB.disabled = true
     answerC.disabled = true
     answerD.disabled = true
-
+    answered = true
 }
 //Random number generation function (usually assigned to randInt)
 function generateRandomNumber(min, max) 
@@ -74,6 +80,7 @@ function generateQuestion()
     answerC.disabled = false
     answerD.disabled = false
     next.classList.add(`display-none`);
+    answered = false
 
     feedback.textContent = ``
     //Assigns random numbers to multipliers
